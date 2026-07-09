@@ -2,7 +2,7 @@
 name = "climbiq"
 version = "0.1.0"
 description = "AI-powered climbing movement analysis engine: pose estimation, kinematics, and movement metrics for climbing video."
-authors = [{ name = "Your Name", email = "you@example.com" }]
+authors = [{ name = "Arunkumar Ramachandran", email = "arunkumar.ramachandran.research@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
 license = { text = "MIT" }

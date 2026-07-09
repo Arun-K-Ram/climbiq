@@ -36,3 +36,4 @@ htmlcov/
 /data/
 /models/
 /outputs/
+smoke_test.py
