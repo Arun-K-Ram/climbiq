@@ -1,0 +1,54 @@
+[project]
+name = "climbiq"
+version = "0.1.0"
+description = "AI-powered climbing movement analysis engine: pose estimation, kinematics, and movement metrics for climbing video."
+authors = [{ name = "Your Name", email = "you@example.com" }]
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = { text = "MIT" }
+
+# Runtime dependencies. Kept intentionally minimal for the current
+# pose-extraction stage of the project -- add opencv/mediapipe's own
+# transitive deps only as new stages (kinematics, representation, reports)
+# land, rather than front-loading dependencies for code that doesn't exist yet.
+dependencies = [
+    "mediapipe (>=0.10.30,<0.11.0)",
+    "opencv-python-headless (>=4.9,<5.0)",
+    "numpy (>=1.26,<2.0)",
+]
+
+[tool.poetry]
+packages = [{ include = "climbiq" }]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+mypy = "^1.13"
+ruff = "^0.8"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# --- Tooling config lives here too, so there's one file new contributors
+# (including future-you) need to look at, not a scattered pile of dotfiles. ---
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_ignores = true
+warn_redundant_casts = true
+disallow_untyped_defs = true
+# pose/ has no untyped MediaPipe stubs available; relax strictness there
+# specifically rather than globally.
+[[tool.mypy.overrides]]
+module = "mediapipe.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

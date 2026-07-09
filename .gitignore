@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Poetry / venv
+.venv/
+venv/
+
+# Testing / tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Project-specific: large binary assets that shouldn't live in git.
+# Climbing videos and downloaded MediaPipe .task model files are inputs
+# fetched/recorded locally, not source -- keep the repo text-only.
+*.mp4
+*.mov
+*.avi
+*.task
+/data/
+/models/
+/outputs/
